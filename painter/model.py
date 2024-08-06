@@ -15,7 +15,7 @@ class circle:
         self.center: point = center
 
     def area(self)-> float:
-        Area= math.pi * (self.radius)** 2
+        Area= math.pi * (self.radius) ** 2
         return (Area)
     
     def draw(self):
@@ -24,7 +24,10 @@ class circle:
         plt.axis("scaled")
         plt.show()
 
-    def  _str_ (self):
+    def _str_ (self):
         circle
-        with center at (x, y) and radius r
-        return f "{x}{y}{e}"
+        return f" with center at {self.x} {self.y} and radius {self.radius}"
+
+class triangle:
+
+    def __int__(self, ):
