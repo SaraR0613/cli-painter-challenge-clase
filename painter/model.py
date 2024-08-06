@@ -1,6 +1,8 @@
 # TODO: Add code here
 import math
 import matplotlib.pyplot as plt
+import pickle
+
 
 class point:
 
@@ -36,7 +38,7 @@ class triangle:
         self.point_3: point = point_3
 
     def area(self)->float:
-        area: 1/2 ()
+        area: 1/2
 
 
     def draw(self):
@@ -53,6 +55,50 @@ class triangle:
 
 class rectangle:
 
-    def __int__(self, ):
+    def __int__(self,point_1:point, point_2:point):
+        self.point_1: point = point_1
+        self.point_2: point = point_2
+
+    def area(self)-> float:
+        area: 00
+
+    def draw(self):
+        x = [self.point_1.x, self.point_2.x, self.point_2.x, self.point_1.x, self.point_1.x]
+        y = [self.point_1.y, self.point_1.y, self.point_2.y, self.point_2.y, self.point_1.y]
+        plt.fill(x, y, color='g')
+        plt.axis("scaled")
+        plt.show()
+
+    def _str_(self):
+        return f"Rectangle with vertices at {self.point_1.x}, {self.point_1.y}  and {self.point_2.x}, {self.point_2.y}"
 
 
+class painter:
+
+    FILE = ".painter"
+
+    def __init__(self) -> None:
+        self.shapes: list = []
+        self._load()
+
+    def _load(self) -> None:
+        try:
+            with open(painter.FILE, "rb") as f:
+                self.shapes = pickle.load(f)
+        except (EOFError, FileNotFoundError):
+            self.shapes = []
+
+    def _save(self) -> None:
+        with open(painter.FILE, "wb") as f:
+            pickle.dump(self.shapes, f)
+
+    def add_shape(self, shape) -> None:
+        self.shapes.append(shape)
+        self._save()
+
+    def total_area(self) -> float:
+        return sum(shape.area() for shape in self.shapes)
+
+    def clear(self) -> None:
+        self.shapes = []
+        self._save()
