@@ -26,9 +26,9 @@ class Circle:
         plt.axis("scaled")
         plt.show()
 
-    def _str_ (self):
+    def __str__(self) -> str:
         Circle
-        return f" with center at {self.x} {self.y} and radius {self.radius}"
+        return f" with center at ({self.center.x} {self.center.y}) and radius {self.radius}"
 
 
 class Triangle:
