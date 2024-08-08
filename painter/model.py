@@ -27,7 +27,6 @@ class Circle:
         plt.show()
 
     def __str__(self) -> str:
-        Circle
         return f" with center at ({self.center.x} {self.center.y}) and radius {self.radius}"
 
 
@@ -36,12 +35,10 @@ class Triangle:
     def __int__(self, point_1: Point, point_2: Point, point_3: Point):
         self.Point_1: Point = point_1
         self.point_2: Point = point_2
-        self.point_3: Point = point_3
+        self.Point_3: Point = point_3
 
     def area(self) -> float:
-        return 0.5 * abs((self.point_1.x * self.point_2.y - self.point_1.x * self.point_3.y) +
-                         self.point_2.x * self.point_3.y - self.point_2.x * self.point_1.y +
-                         (self.point_3.x * self.point_1.y - self.point_3.x * self.point_2.y))
+        return 0.5 * abs((self.Point_1.x * self.point_2.y - self.Point_1.x * self.Point_3.y) + self.point_2.x * self.point_3.y - self.point_2.x * self.Point_1.y + (self.point_3.x * self.point_1.y - self.point_3.x * self.point_2.y))
 
     def draw(self):
         x = [self.point_1.x, self.point_2.x, self.point_3.x, self.point_1.x]
@@ -104,4 +101,3 @@ class Painter:
     def clear(self) -> None:
         self.shapes = []
         self._save()
-
