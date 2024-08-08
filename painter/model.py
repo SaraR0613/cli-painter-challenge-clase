@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 import pickle
 
 
-class point:
+class Point:
 
     def __int__(self, x: float, y: float):
-        self.x: float = 0
-        self.y: float = 0
+        self.x: float = x
+        self.y: float = y
 
-class circle:
+class Circle:
 
-    def __int__(self, center: point, radius: float):
+    def __int__(self, center: Point, radius: float):
         self.radius: float = radius
-        self.center: point = center
+        self.center: Point = center
 
     def area(self)-> float:
         Area= math.pi * (self.radius) ** 2
@@ -27,15 +27,15 @@ class circle:
         plt.show()
 
     def _str_ (self):
-        circle
+        Circle
         return f" with center at {self.x} {self.y} and radius {self.radius}"
 
-class triangle:
+class Triangle:
 
-    def __int__(self, point_1: point, point_2: point, point_3: point):
-        self.point_1: point = point_1
-        self.point_2: point = point_2
-        self.point_3: point = point_3
+    def __int__(self, Point_1: Point, Point_2: Point, Point_3: Point):
+        self.Point_1: Point = Point_1
+        self.point_2: Point = Point_2
+        self.point_3: Point = Point_3
 
     def area(self)->float:
         area: 1/2
@@ -49,15 +49,15 @@ class triangle:
         plt.show()
 
     def _str_(self):
-        triangle
+        Triangle
         return f"with vertices at {self.point_1.x}, {self.point_1.y}, {self.point_2.x}, {self.point_2.y} and {self.point_3.x}, {self.point_3.y}"
 
 
-class rectangle:
+class Rectangle:
 
-    def __int__(self,point_1:point, point_2:point):
-        self.point_1: point = point_1
-        self.point_2: point = point_2
+    def __int__(self,point_1:Point, point_2:Point):
+        self.point_1: Point = point_1
+        self.point_2: Point = point_2
 
     def area(self)-> float:
         area: 00
@@ -73,7 +73,7 @@ class rectangle:
         return f"Rectangle with vertices at {self.point_1.x}, {self.point_1.y}  and {self.point_2.x}, {self.point_2.y}"
 
 
-class painter:
+class Painter:
 
     FILE = ".painter"
 
@@ -83,13 +83,13 @@ class painter:
 
     def _load(self) -> None:
         try:
-            with open(painter.FILE, "rb") as f:
+            with open(Painter.FILE, "rb") as f:
                 self.shapes = pickle.load(f)
         except (EOFError, FileNotFoundError):
             self.shapes = []
 
     def _save(self) -> None:
-        with open(painter.FILE, "wb") as f:
+        with open(Painter.FILE, "wb") as f:
             pickle.dump(self.shapes, f)
 
     def add_shape(self, shape) -> None:
