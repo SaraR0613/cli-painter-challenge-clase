@@ -10,15 +10,15 @@ class Point:
         self.x: float = x
         self.y: float = y
 
+
 class Circle:
 
     def __int__(self, center: Point, radius: float):
         self.radius: float = radius
         self.center: Point = center
 
-    def area(self)-> float:
-        Area= math.pi * (self.radius) ** 2
-        return (Area)
+    def area(self) -> float:
+        return math.pi * self.radius ** 2
     
     def draw(self):
         circle = plt.Circle((self.center.x, self.center.y), self.radius, color="r")
@@ -30,6 +30,7 @@ class Circle:
         Circle
         return f" with center at {self.x} {self.y} and radius {self.radius}"
 
+
 class Triangle:
 
     def __int__(self, Point_1: Point, Point_2: Point, Point_3: Point):
@@ -39,7 +40,6 @@ class Triangle:
 
     def area(self)->float:
         area: 1/2
-
 
     def draw(self):
         x = [self.point_1.x, self.point_2.x, self.point_3.x, self.point_1.x]
