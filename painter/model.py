@@ -33,13 +33,15 @@ class Circle:
 
 class Triangle:
 
-    def __int__(self, Point_1: Point, Point_2: Point, Point_3: Point):
-        self.Point_1: Point = Point_1
-        self.point_2: Point = Point_2
-        self.point_3: Point = Point_3
+    def __int__(self, point_1: Point, point_2: Point, point_3: Point):
+        self.Point_1: Point = point_1
+        self.point_2: Point = point_2
+        self.point_3: Point = point_3
 
-    def area(self)->float:
-        area: 1/2
+    def area(self) -> float:
+        return 0.5 * abs((self.point_1.x * self.point_2.y - self.point_1.x * self.point_3.y) +
+                         self.point_2.x * self.point_3.y - self.point_2.x * self.point_1.y +
+                         (self.point_3.x * self.point_1.y - self.point_3.x * self.point_2.y))
 
     def draw(self):
         x = [self.point_1.x, self.point_2.x, self.point_3.x, self.point_1.x]
@@ -48,9 +50,9 @@ class Triangle:
         plt.axis("scaled")
         plt.show()
 
-    def _str_(self):
-        Triangle
-        return f"with vertices at {self.point_1.x}, {self.point_1.y}, {self.point_2.x}, {self.point_2.y} and {self.point_3.x}, {self.point_3.y}"
+    def __str__(self):
+        return (f"with vertices at {self.point_1.x}, {self.point_1.y}, {self.point_2.x}, "
+                f"{self.point_2.y} and {self.point_3.x}, {self.point_3.y}")
 
 
 class Rectangle:
@@ -59,8 +61,8 @@ class Rectangle:
         self.point_1: Point = point_1
         self.point_2: Point = point_2
 
-    def area(self)-> float:
-        area: 00
+    def area (self) -> float:
+        return  abs((self.point_1.x - self.point_2.x) * (self.point_1.y - self.point_2.y))
 
     def draw(self):
         x = [self.point_1.x, self.point_2.x, self.point_2.x, self.point_1.x, self.point_1.x]
@@ -102,3 +104,4 @@ class Painter:
     def clear(self) -> None:
         self.shapes = []
         self._save()
+
